@@ -60,6 +60,11 @@ require("lazy").setup({
    'junegunn/fzf', -- fuzzy finder
    'junegunn/fzf.vim' ,
 -- << Additionnal Plugins
+{
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+-- or                              , branch = '0.1.1',
+      dependencies = { 'nvim-lua/plenary.nvim' }
+    },
 
 -- >> Organizational Plugins 
     {
@@ -69,18 +74,21 @@ require("lazy").setup({
             load = {
                 ["core.defaults"] = {}, -- Loads default behaviour
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
+		["core.integrations.telescope"] = {},
+		["core.summary"] = {},
                 ["core.dirman"] = { -- Manages Neorg workspaces
                     config = {
                         workspaces = {
-                            computer_works = "~/computer_works",
-			    works = "~/works",
-			    study = "~/study"
+                            computer_works = "~/computer_works/norgfiles",
+			    KMPS = "~/KMPS",
+			    study = "~/study/norgfiles",
+			    works = "~/works/norgfiles",
                         },
                     },
                 },
             },
         },
-        dependencies = { { "nvim-lua/plenary.nvim" } },
+        dependencies = { { "nvim-lua/plenary.nvim" },{"nvim-neorg/neorg-telescope"} },
     },
 -- << Organizational Plugins
 })
