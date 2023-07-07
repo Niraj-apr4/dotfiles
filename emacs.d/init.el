@@ -1,0 +1,109 @@
+;; enable melpa 
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+;; custom set variables
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(TeX-view-program-selection
+   '(((output-dvi has-no-display-manager)
+      "dvi2tty")
+     ((output-dvi style-pstricks)
+      "dvips and gv")
+     (output-dvi "xdvi")
+     (output-pdf "Zathura")
+     (output-html "xdg-open")))
+ '(cdlatex-math-symbol-prefix 59)
+ '(cdlatex-paired-parens "$[{(")
+ '(org-highlight-latex-and-related '(native script entities))
+ '(org-pretty-entities t)
+ '(package-selected-packages '(magit yasnippet cdlatex auctex evil use-package)))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Source Code Pro" :foundry "ADBO" :slant normal :weight normal :height 113 :width normal)))))
+
+;; use package declaration
+(eval-when-compile
+  (require 'use-package))
+
+;; VI key-bindings
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode 1))
+
+;; auctex settings
+(use-package tex
+  :ensure auctex
+  :pin gnu
+  :hook ((LaTeX-mode . prettify-symbols-mode)))
+
+;; cdlatex settings
+(use-package cdlatex
+  :ensure t
+  :hook (LaTeX-mode . turn-on-cdlatex))
+
+;; magit
+(use-package magit
+  :ensure t)
+
+;; org-mode settings
+(add-hook 'org-mode-hook #'turn-on-org-cdlatex) ;; turn on org-cdlatex
+
+;; copied 
+;; Yasnippet settings
+(use-package yasnippet
+  :ensure t
+  :hook ((LaTeX-mode . yas-minor-mode)
+         (post-self-insert . my/yas-try-expanding-auto-snippets))
+  :config
+    (setq yas-snippet-dirs '("~/repository/yasnippets"))
+  (use-package warnings
+    :config
+    (cl-pushnew '(yasnippet backquote-change)
+                warning-suppress-types
+                :test 'equal))
+
+  (setq yas-triggers-in-field t)
+  
+  ;; Function that tries to autoexpand YaSnippets
+  ;; The double quoting is NOT a typo!
+  (defun my/yas-try-expanding-auto-snippets ()
+    (when (and (boundp 'yas-minor-mode) yas-minor-mode)
+      (let ((yas-buffer-local-condition ''(require-snippet-condition . auto)))
+        (yas-expand)))));; yasnippet settings
+;; copied
+
+(use-package preview
+  :after latex
+  :hook ((LaTeX-mode . preview-larger-previews))
+  :config
+  (defun preview-larger-previews ()
+    (setq preview-scale-function
+          (lambda () (* 1.25
+                   (funcall (preview-scale-from-face)))))))
+(use-package doom-themes
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-one t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
