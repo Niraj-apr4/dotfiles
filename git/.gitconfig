@@ -1,0 +1,14 @@
+[init]
+	defaultBranch = main
+[user]
+	email = niraj.apr4@gmail.com
+	name = niraj
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --max-count=7
+  type = cat-file -t
+  dump = cat-file -p
+

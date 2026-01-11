@@ -1,0 +1,26 @@
+[[language]]
+name = "typst"
+language-servers = ["tinymist"]
+
+auto-format = true
+
+[language-server.tinymist]
+command = "tinymist"
+#config = { preview.background.enabled = true, preview.background.args = ["--data-plane-host=127.0.0.1:23635", "--invert-colors=never", "--open"] }
+config = { exportPdf = "onType" }
+#config = {exportPdf = "onSave"}
+
+[[language]]
+name = "julia"
+scope = "source.julia"
+injection-regex = "julia"
+file-types = ["jl"]
+roots = ["Project.toml", "Manifest.toml", "JuliaProject.toml"]
+comment-token = "#"
+language-servers = ["julia"]
+indent = { tab-width = 4, unit = "    " }
+
+[language-server.julia]
+command = "julia"
+timeout = 120
+args = ["-e", "using LanguageServer; runserver();"]
