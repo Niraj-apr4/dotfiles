@@ -17,5 +17,8 @@ fi
 
 # Your other xinitrc commands go here
 # exec your-window-manager
-picom -b
-exec dwm
+# composite manager 
+picom -b 
+
+# window manager 
+exec bspwm
