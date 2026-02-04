@@ -2,18 +2,26 @@
 # ~/.bashrc
 #
 
+
+# for git prompt and git completions >>>
+ . ~/.git-prompt.sh
+ source ~/.git-completion.bash
+# <<<
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+PROMPT_COMMAND='__git_ps1 "\w" "\\\$ "'
 alias grep='grep --color=auto'
-PS1='[\w]\$ '
+
 export FONTCONFIG_PATH=~/.local/share/fonts:$FONTCONFIG_PATH
 
 # append texlive binary to path variable 
 export PATH=$PATH:/home/niraj/texlive/bin/x86_64-linux
 
 # setup default editor $EDITOR
-export EDITOR="emacs"
+export EDITOR="helix"
+alias hx="helix"
 
 # append gmsh binary to path variable 
 export PATH=$PATH:/home/niraj/gmsh/bin
