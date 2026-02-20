@@ -7,8 +7,8 @@ auto-format = true
 [language-server.tinymist]
 command = "tinymist"
 #config = { preview.background.enabled = true, preview.background.args = ["--data-plane-host=127.0.0.1:23635", "--invert-colors=never", "--open"] }
-config = { exportPdf = "onType" }
-#config = {exportPdf = "onSave"}
+#config = { exportPdf = "onType" }
+config = {exportPdf = "onSave"}
 
 [[language]]
 name = "julia"
@@ -24,3 +24,7 @@ indent = { tab-width = 4, unit = "    " }
 command = "julia"
 timeout = 120
 args = ["-e", "using LanguageServer; runserver();"]
+
+[[language]]
+name="fortran"
+language-servers=["fortls"]

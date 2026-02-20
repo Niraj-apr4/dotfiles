@@ -48,3 +48,4 @@ export PATH=$PATH:/home/niraj/typst
 # append custom scripts  
 export PATH=$PATH:/home/niraj/repositories/custom_scripts/sh
 export PATH=$PATH:/home/niraj/repositories/custom_scripts/
+
