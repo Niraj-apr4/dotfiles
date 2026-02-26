@@ -16,8 +16,6 @@ alias grep='grep --color=auto'
 
 export FONTCONFIG_PATH=~/.local/share/fonts:$FONTCONFIG_PATH
 
-# append texlive binary to path variable 
-export PATH=$PATH:/home/niraj/texlive/bin/x86_64-linux
 
 # setup default editor $EDITOR
 export EDITOR="helix"
@@ -44,8 +42,4 @@ esac
 export PATH=$PATH:/home/niraj/typst
 
 . "$HOME/.local/bin/env"
-
-# append custom scripts  
-export PATH=$PATH:/home/niraj/repositories/custom_scripts/sh
-export PATH=$PATH:/home/niraj/repositories/custom_scripts/
 
