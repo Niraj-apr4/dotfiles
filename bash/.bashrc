@@ -21,6 +21,7 @@ export FONTCONFIG_PATH=~/.local/share/fonts:$FONTCONFIG_PATH
 export EDITOR="helix"
 alias hx="helix"
 
+export PATH=$PATH:/home/niraj/.local/bin
 # append gmsh binary to path variable 
 export PATH=$PATH:/home/niraj/gmsh/bin
 
@@ -38,8 +39,3 @@ case ":$PATH:" in
 esac
 
 # <<< juliaup initialize <<<
-
-export PATH=$PATH:/home/niraj/typst
-
-. "$HOME/.local/bin/env"
-
