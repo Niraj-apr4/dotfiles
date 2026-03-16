@@ -39,5 +39,5 @@ case ":$PATH:" in
 esac
 
 # <<< juliaup initialize <<<
- 
-alias ls="ls-l"
+
+. "$HOME/.cargo/env"

@@ -16,3 +16,4 @@ esac
 # <<< juliaup initialize <<<
 
 . "$HOME/.local/bin/env"
+. "$HOME/.cargo/env"

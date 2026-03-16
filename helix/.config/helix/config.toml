@@ -1,6 +1,0 @@
-# theme = "base16_terminal"
-theme = "modus_operandi_tritanopia"
-
-[editor.cursor-shape]
-insert = "bar"
-normal = "block"
