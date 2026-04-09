@@ -44,6 +44,7 @@ return {
       vim.keymap.set('n', '<leader>qr', quarto.quartoSend, { desc = 'run cell' })
       vim.keymap.set('n', '<leader>qa', quarto.quartoSendAll, { desc = 'run all cells' })
       vim.keymap.set('n', '<leader>qR', quarto.quartoSendAbove, { desc = 'run cells above' })
+      vim.keymap.set('n', '<leader>qq', function() vim.cmd 'SlimeSend' end, { desc = 'slime send' })
       vim.keymap.set('n', '<S-CR>', function()
         quarto.quartoSend()
         vim.cmd 'norm! ]b'

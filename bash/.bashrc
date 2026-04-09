@@ -24,6 +24,7 @@ alias hx="helix"
 export PATH=$PATH:/home/niraj/.local/bin
 # append gmsh binary to path variable 
 export PATH=$PATH:/home/niraj/gmsh/bin
+export PATH=$PATH:/home/niraj/opt/bin
 
 # >>> juliaup initialize >>>
 
