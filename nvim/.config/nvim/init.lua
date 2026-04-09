@@ -824,11 +824,18 @@ require('lazy').setup({
   --     vim.cmd.colorscheme 'tokyonight-night'
   --   end,
   -- },
+
+  -- { 'catppuccin/nvim', name = 'catppuccin', priority = 1000, config = function() vim.cmd.colorscheme 'catppuccin' end },
+  {
+    'rebelot/kanagawa.nvim',
+    priority = 1000,
+    -- config = function() vim.cmd.colorscheme 'kanagawa-wave' end,
+  },
   {
     'miikanissi/modus-themes.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'modus_vivendi' -- or 'modus_operandi' for light
+      vim.cmd.colorscheme 'modus_operandi' -- or 'modus_operandi' for light
     end,
   },
   -- Highlight todo, notes, etc in comments
